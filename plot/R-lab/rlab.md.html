@@ -1,0 +1,86 @@
+# R lab
+## Gui
+
+## DATA
+- Modified CSV: separator: ;
+  - more cols
+  - :%s/\.//g # removed 1.000 point separators
+  - :%s/,/./g # changed precision notation
+- dat = read.csv("c:\\office\\bin\\LAB\\RLAB\\report-EGW-Elegant.csv", sep=";", header = FALSE)
+
+aggregate(dat$V4, by=list("YEAR-EGW"=dat$V1), FUN=sum)
+> aggregate(dat$V4, by=list(Category=dat$V1), FUN=sum)
+  Category       x
+1     2016  675.34
+2     2017 1391.44
+3     2018  247.60
+> 
+> 
+
+
+> dat = read.csv("c:\\office\\bin\\LAB\\RLAB\\rSample.csv", sep=";", header = TRUE)
+> dat
+  Category Frequency
+1    First        10
+2    First        15
+3    First         5
+4   Second         2
+5    Third        14
+6    Third        20
+7   Second         3
+> aggregate(dat$Frequency, by=list(Category=dat$Category), FUN=sum)
+  Category  x
+1    First 30
+2   Second  5
+3    Third 34
+> 
+
+## READ first lines
+- head(dat, 10)
+- 
+
+## AGGREGATE
+
+aggregate(dat$V4, by=list("YEAR"=dat$V1 , "provider"=dat$V5), FUN=sum)
+
+> aggregate(dat$V6, by=list("YEAR"=dat$V1, "provider"=dat$V5), FUN=sum)
+   YEAR   provider       x
+1  2016     Eandis -180.00
+2  2014     EANDIS -539.94
+3  2014 Electrabel  994.71
+4  2015 Electrabel 1250.17
+5  2016 Electrabel  523.87
+6  2014 ELECTRABEL -178.33
+7  2016    Elegant  675.34
+8  2017    Elegant 1391.44
+9  2018    Elegant  247.60
+10 2013      Eneco 1346.57
+11 2014      Eneco  467.41
+12 2013       TMVW  325.05
+13 2014       TMVW  590.54
+14 2015       TMVW  448.13
+15 2016       TMVW  575.14
+16 2017       TMVW  710.36
+> 
+
+aggregate(dat$V6, by=list("provider"=dat$V5 , "Year"=dat$V1), FUN=sum)
+// by=list different sorting 
+
+## SAVE
+- save.image("C:\\office\\bin\\LAB\\RLAB\\EGW")
+
+## OUTPUT volledig jaar:
+-  
+4  2015 Electrabel 1250.17
+7  2017    Elegant 1391.44
+9  2013      Eneco 1346.57
+
+VS voorstel 2018 Engie:
+Jaarkosten stroom + gas	€ 1.326,85
+
+Besparing: 
+- voorstel Geschatte besparing
+€ 160
+- eigen schatting:  1391.44 - 1326.85 = 64.59
+
+
